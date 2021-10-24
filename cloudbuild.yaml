@@ -10,7 +10,7 @@ steps:
     args: ['validate', '.']
   - id: terraform-plan
     name: gcr.io/marwan01-terraform-admin/terraform
-    args: ['plan', '-out', 'tf.plan', '-lock=false']
+    args: ['plan', '-out', 'tf.plan']
   - id: terraform-apply
     name: gcr.io/marwan01-terraform-admin/terraform
     args: ['apply', '-out', 'tf.plan']
