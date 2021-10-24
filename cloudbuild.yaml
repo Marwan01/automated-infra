@@ -13,7 +13,7 @@ steps:
     args: ['plan', '-out', 'tf.plan']
   - id: terraform-apply
     name: gcr.io/marwan01-terraform-admin/terraform
-    args: ['apply', '-out', 'tf.plan']
+    args: ['apply', 'tf.plan']
   - id: gsutil copy
     name: gcr.io/marwan01-terraform-admin/gsutil
     entrypoint: gsutil
