@@ -22,4 +22,4 @@ steps:
       - |
         gsutil cp index.html gs://website-bucket-11242021/index.html
         gsutil iam ch allUsers:objectViewer gs://website-bucket-11242021/index.html
-tags: ["terraform", "validation"]
+tags: ["terraform"]
