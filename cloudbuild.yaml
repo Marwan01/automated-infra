@@ -1,34 +1,19 @@
 steps:
   - id: terraform-formatting
     name: gcr.io/marwan01-terraform-admin/terraform:0.14.3
-    entrypoint: bash
-    args:
-      - -c
-      - |
-        echo "Unformatted files (if any):"
-        terraform fmt -recursive -check
+    args: ['terraform', 'fmt', '-recursive', '-check']
+  - id: terraform-init
+    name: gcr.io/marwan01-terraform-admin/terraform:0.14.3
+    args: ['terraform', 'init']
   - id: terraform-validate
     name: gcr.io/marwan01-terraform-admin/terraform:0.14.3
-    entrypoint: bash
-    args:
-      - -c
-      - |
-        terraform init
-        terraform validate
+    args: ['terraform', 'validate', '.']
   - id: terraform-plan
     name: gcr.io/marwan01-terraform-admin/terraform:0.14.3
-    entrypoint: bash
-    args:
-      - -c
-      - |
-        terraform plan -out tf.plan
+    args: ['terraform', 'plan', '-out', 'tf.plan']
   - id: terraform-apply
     name: gcr.io/marwan01-terraform-admin/terraform:0.14.3
-    entrypoint: bash
-    args:
-      - -c
-      - |
-        terraform apply tf.plan
+    args: ['terraform', 'apply', '-out', 'tf.plan']
   - id: gsutil copy
     name: gcr.io/marwan01-terraform-admin/gsutil
     entrypoint: gsutil
