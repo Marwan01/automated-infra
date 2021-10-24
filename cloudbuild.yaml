@@ -15,4 +15,11 @@ steps:
       - |
         terraform init
         terraform validate
+  - id: terraform-plan
+    name: gcr.io/marwan01-terraform-admin/terraform:0.14.3
+    entrypoint: bash
+    args:
+      - -c
+      - |
+        terraform plan
 tags: ["terraform", "validation"]
