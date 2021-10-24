@@ -14,11 +14,7 @@ steps:
   - id: terraform-apply
     name: gcr.io/marwan01-terraform-admin/terraform
     args: ['apply', 'tf.plan']
-  - id: gsutil copy
+  - id: gsutil-copy
     name: gcr.io/marwan01-terraform-admin/gsutil
     entrypoint: gsutil
-    args:
-      - -c
-      - |
-        gsutil cp index.html gs://website-bucket-11242021/index.html
-        gsutil iam ch allUsers:objectViewer gs://website-bucket-11242021/index.html
+    args: ['cp', 'index.html', 'gs://website-bucket-11242021/index.html']
