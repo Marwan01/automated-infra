@@ -1,7 +1,7 @@
 steps:
   - id: generate-terraform-creds
     name: gcr.io/google.com/cloudsdktool/cloud-sdk
-    args: ['gcloud', 'iam', 'service-accounts', 'keys', 'create', 'marwan01-terraform-admin.json']
+    args: ['gcloud', 'iam', 'service-accounts', 'keys', 'create', '${PROJECT_ID}.json', '--iam-account', 'terraform@${PROJECT_ID}.iam.gserviceaccount.com']
   - id: terraform-formatting
     name: gcr.io/marwan01-terraform-admin/terraform
     args: ['fmt', '-recursive', '-check']
