@@ -18,3 +18,7 @@ steps:
     name: gcr.io/marwan01-terraform-admin/gsutil
     entrypoint: gsutil
     args: ['cp', 'index.html', 'gs://website-bucket-11242021/index.html']
+  - id: gsutil-public-permission
+    name: gcr.io/marwan01-terraform-admin/gsutil
+    entrypoint: gsutil
+    args: ['iam', 'ch', 'allUsers:objectViewer', 'gs://website-bucket-11242021/index.html']
