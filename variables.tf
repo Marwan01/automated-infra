@@ -13,3 +13,8 @@ variable "region" {
   type        = string
   default     = "us-west2"
 }
+
+variable "gcp_auth_file" {
+  type = string
+  description = "GCP authentication file"
+}
