@@ -12,7 +12,7 @@ terraform {
 }
 
 module "static_site_storage_bucket" {
-    source = "./modules/storage-bucket"
-    project_id    = var.project_id
-    bucket_name   = var.bucket_name
+  source      = "./modules/storage-bucket"
+  project_id  = var.project_id
+  bucket_name = var.bucket_name
 }
