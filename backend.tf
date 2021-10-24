@@ -1,7 +1,6 @@
 terraform {
   backend "gcs" {
-    bucket = var.project_id
+    bucket = "marwan01-terraform-admin"
     prefix = "terraform/state"
-    credentials = var.gcp_auth_file
   }
 }
