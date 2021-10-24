@@ -5,7 +5,14 @@ steps:
     args:
       - -c
       - |
-        set -o errexit -o pipefail
         echo "Unformatted files (if any):"
         terraform fmt -recursive -check
+  - id: terraform-validate
+    name: gcr.io/marwan01-terraform-admin/terraform:0.14.3
+    entrypoint: bash
+    args:
+      - -c
+      - |
+        terraform init
+        terraform validate
 tags: ["terraform", "validation"]
