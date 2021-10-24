@@ -21,5 +21,12 @@ steps:
     args:
       - -c
       - |
-        terraform plan
+        terraform plan -out tf.plan
+  - id: terraform-apply
+    name: gcr.io/marwan01-terraform-admin/terraform:0.14.3
+    entrypoint: bash
+    args:
+      - -c
+      - |
+        terraform apply tf.plan
 tags: ["terraform", "validation"]
