@@ -3,6 +3,20 @@ provider "google" {
   region  = var.region
 }
 
+data "google_iam_policy" "viewer" {
+  binding {
+    role = "roles/storage.objectViewer"
+    members = [
+        "allUsers",
+    ] 
+  }
+}
+
+resource "google_storage_bucket_iam_policy" "public_rule" {
+  bucket = var.bucket_name
+  policy_data = "${data.google_iam_policy.viewer.policy_data}"
+}
+
 resource "google_storage_bucket" "static_site" {
   name          = var.bucket_name
   location      = var.region
@@ -18,10 +32,4 @@ resource "google_storage_bucket" "static_site" {
     response_header = ["*"]
     max_age_seconds = 3600
   }
-}
-
-resource "google_storage_default_object_access_control" "public_rule" {
-  bucket = var.bucket_name
-  role   = "READER"
-  entity = "allUsers"
 }
