@@ -6,10 +6,10 @@ provider "google" {
 
 # Create a GCS Bucket
 resource "google_storage_bucket" "static_site" {
-  name                        = var.bucket_name
-  location                    = var.region
-  force_destroy               = true
-#   uniform_bucket_level_access = true
+  name          = var.bucket_name
+  location      = var.region
+  force_destroy = true
+  #   uniform_bucket_level_access = true
 
   website {
     main_page_suffix = "index.html"
