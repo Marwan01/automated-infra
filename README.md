@@ -1,8 +1,8 @@
-1. Set up the environment assuming you are using GCP project `PROJECT_NAME`:
+1. Set up the environment assuming you are using GCP project `PROJECT_ID`:
 
 ```sh
-export TF_ADMIN=${PROJECT_NAME}
-export TF_CREDS=~/.config/gcloud/${PROJECT_NAME}.json
+export TF_ADMIN=${PROJECT_ID}
+export TF_CREDS=~/.config/gcloud/${PROJECT_ID}.json
 ```
 
 2. Create the Terraform service account:
@@ -11,19 +11,19 @@ export TF_CREDS=~/.config/gcloud/${PROJECT_NAME}.json
 gcloud iam service-accounts create terraform \
   --display-name "Terraform admin account"
 
-gcloud iam service-accounts keys create ~/.config/gcloud/${PROJECT_NAME}.json \
-  --iam-account terraform@${PROJECT_NAME}.iam.gserviceaccount.com
+gcloud iam service-accounts keys create ~/.config/gcloud/${PROJECT_ID}.json \
+  --iam-account terraform@${PROJECT_ID}.iam.gserviceaccount.com
   ```
 
 3. Grant the service account permission to view the Admin Project and manage Cloud Storage:
 
 ```sh
-gcloud projects add-iam-policy-binding ${PROJECT_NAME} \
-  --member serviceAccount:terraform@${PROJECT_NAME}.iam.gserviceaccount.com \
+gcloud projects add-iam-policy-binding ${PROJECT_ID} \
+  --member serviceAccount:terraform@${PROJECT_ID}.iam.gserviceaccount.com \
   --role roles/viewer
 
-gcloud projects add-iam-policy-binding ${PROJECT_NAME} \
-  --member serviceAccount:terraform@${PROJECT_NAME}.iam.gserviceaccount.com \
+gcloud projects add-iam-policy-binding ${PROJECT_ID} \
+  --member serviceAccount:terraform@${PROJECT_ID}.iam.gserviceaccount.com \
   --role roles/storage.admin
 ```
 
@@ -40,8 +40,8 @@ gcloud services enable serviceusage.googleapis.com
 5. Configure your environment for the Google Cloud Terraform provider:
 
 ```sh
-export GOOGLE_APPLICATION_CREDENTIALS=~/.config/gcloud/${PROJECT_NAME}.json
-export GOOGLE_PROJECT=${PROJECT_NAME}
+export GOOGLE_APPLICATION_CREDENTIALS=~/.config/gcloud/${PROJECT_ID}.json
+export GOOGLE_PROJECT=${PROJECT_ID}
 ```
 
 
