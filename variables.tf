@@ -15,6 +15,7 @@ variable "region" {
 }
 
 variable "gcp_auth_file" {
-  type = string
-  description = "GCP authentication file"
+  type        = string
+  sensitive   = true
+  description = "Google Cloud service account credentials"
 }
