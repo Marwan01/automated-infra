@@ -1,0 +1,11 @@
+steps:
+  - id: terraform-formatting
+    name: gcr.io/marwan01-terraform-admin/terraform:0.14.3
+    entrypoint: bash
+    args:
+      - -c
+      - |
+        set -o errexit -o pipefail
+        echo "Unformatted files (if any):"
+        terraform fmt -recursive -check
+tags: ["terraform", "validation"]
