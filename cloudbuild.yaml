@@ -1,19 +1,19 @@
 steps:
   - id: terraform-formatting
     name: gcr.io/marwan01-terraform-admin/terraform:0.14.3
-    args: ['terraform', 'fmt', '-recursive', '-check']
+    args: ['fmt', '-recursive', '-check']
   - id: terraform-init
     name: gcr.io/marwan01-terraform-admin/terraform:0.14.3
-    args: ['terraform', 'init']
+    args: ['init']
   - id: terraform-validate
     name: gcr.io/marwan01-terraform-admin/terraform:0.14.3
-    args: ['terraform', 'validate', '.']
+    args: ['validate', '.']
   - id: terraform-plan
     name: gcr.io/marwan01-terraform-admin/terraform:0.14.3
-    args: ['terraform', 'plan', '-out', 'tf.plan']
+    args: ['plan', '-out', 'tf.plan']
   - id: terraform-apply
     name: gcr.io/marwan01-terraform-admin/terraform:0.14.3
-    args: ['terraform', 'apply', '-out', 'tf.plan']
+    args: ['apply', '-out', 'tf.plan']
   - id: gsutil copy
     name: gcr.io/marwan01-terraform-admin/gsutil
     entrypoint: gsutil
