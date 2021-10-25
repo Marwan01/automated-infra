@@ -1,7 +1,21 @@
-resource "google_storage_bucket_access_control" "public_rule" {
+# resource "google_storage_bucket_access_control" "public_rule" {
+#   bucket = google_storage_bucket.static_site.name
+#   role   = "READER"
+#   entity = "allUsers"
+# }
+
+data "google_iam_policy" "viewer" {
+  binding {
+    role = "roles/storage.objectViewer"
+    members = [
+        "allUsers",
+    ] 
+  }
+}
+
+resource "google_storage_bucket_iam_policy" "editor" {
   bucket = google_storage_bucket.static_site.name
-  role   = "READER"
-  entity = "allUsers"
+  policy_data = data.google_iam_policy.viewer.policy_data
 }
 
 resource "google_storage_bucket" "static_site" {
