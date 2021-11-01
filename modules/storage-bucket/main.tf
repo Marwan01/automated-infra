@@ -18,7 +18,7 @@ resource "google_storage_bucket" "static_site" {
   force_destroy = true
 
   website {
-    main_page_suffix = "index.html"
+    main_page_suffix = "public/index.html"
     not_found_page   = "404.html"
   }
   cors {
