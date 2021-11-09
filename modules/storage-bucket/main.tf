@@ -1,3 +1,9 @@
+resource "google_storage_default_object_access_control" "public_rule" {
+  bucket = google_storage_bucket.static_site.name
+  role   = "READER"
+  entity = "allUsers"
+}
+
 resource "google_storage_bucket" "static_site" {
   name          = var.bucket_name
   location      = var.region
