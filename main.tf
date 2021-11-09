@@ -1,6 +1,6 @@
 provider "google" {
-  project     = var.project_id
-  region      = var.region
+  project = var.project_id
+  region  = var.region
 }
 
 terraform {
@@ -11,7 +11,9 @@ terraform {
 }
 
 module "static_site_storage_bucket" {
-  source      = "./modules/storage-bucket"
-  project_id  = var.project_id
-  bucket_name = var.bucket_name
+  source             = "./modules/storage-bucket"
+  project_id         = var.project_id
+  region             = var.region
+  bucket_name        = var.bucket_name
+  static_site_source = var.static_site_source
 }
