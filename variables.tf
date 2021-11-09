@@ -13,9 +13,3 @@ variable "region" {
   type        = string
   default     = "us-west2"
 }
-
-variable "gcp_auth_file" {
-  type        = string
-  sensitive   = true
-  description = "Google Cloud service account credentials"
-}

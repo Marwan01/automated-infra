@@ -1,4 +1,3 @@
-marwan01-terraform-admin.json
 .terraform
 .terraform.lock.hcl
 tf.plan
