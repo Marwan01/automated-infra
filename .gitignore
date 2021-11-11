@@ -1,3 +1,7 @@
+# local terraform run files
 .terraform
 .terraform.lock.hcl
 tf.plan
+# local terraform state files:
+terraform.tfstate
+terraform.tfstate.backup
