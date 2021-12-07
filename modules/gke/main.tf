@@ -1,6 +1,6 @@
 resource "google_container_cluster" "primary" {
   name               = var.gke_cluster_name
-  project = var.project_id
+  project            = var.project_id
   location           = var.region
   initial_node_count = 2
 }

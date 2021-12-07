@@ -19,16 +19,16 @@ module "static_site_storage_bucket" {
 }
 
 module "bigtable_table" {
-  source             = "./modules/bigtable"
-  project_id         = var.project_id
-  bq_instance_name        = var.bq_instance_name
-  bq_table_name = var.bq_table_name
+  source           = "./modules/bigtable"
+  project_id       = var.project_id
+  bq_instance_name = var.bq_instance_name
+  bq_table_name    = var.bq_table_name
 }
 
 module "gke_deployment" {
-  source             = "./modules/gke"
-  project_id         = var.project_id
-  region             = var.region
-  gke_cluster_name        = var.gke_cluster_name
+  source                = "./modules/gke"
+  project_id            = var.project_id
+  region                = var.region
+  gke_cluster_name      = var.gke_cluster_name
   deploy_image_location = var.deploy_image_location
 }
