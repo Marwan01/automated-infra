@@ -27,7 +27,7 @@ func readRow(ctx context.Context, tbl *bigtable.Table, columnFamily string, rowK
 
 func bigTableNewClient(ctx context.Context, projectID string, instanceID string) *bigtable.Client {
 	// Set up Bigtable data operations client.
-	client, err := bigtable.NewClient(ctx, projectID, instanceID, option.WithCredentialsFile("automated-infra.json"))
+	client, err := bigtable.NewClient(ctx, projectID, instanceID, option.WithCredentialsFile("go-automated-infra.json"))
 	if err != nil {
 		logrus.Errorf("Could not create data operations client: %v", err)
 	}

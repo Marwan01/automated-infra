@@ -1,4 +1,4 @@
-module automated-infra
+module go-automated-infra
 
 go 1.17
 

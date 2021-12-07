@@ -1,6 +1,6 @@
 project_id            = "go-automated-infra"
-region                = "us-west4-c"
-bucket_name           = "website-bucket-12072021"
+region                = "us-west2"
+bucket_name           = "go-automated-infra-frontend-website"
 static_site_source    = "public/index.html"
 bq_table_name         = "go-automated-infra-table"
 bq_instance_name      = "go-automated-infra-instance"
