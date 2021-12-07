@@ -19,10 +19,6 @@ steps:
   - id: terraform-plan
     name: us-west2-docker.pkg.dev/${PROJECT_ID}/go-automated-infra-repo/terraform:latest
     args: ['plan', '-out', 'tf.plan']
-  # CAREFUL: apply the terraform plan in tf.plan to create the desired infrastructure
-  - id: terraform-apply
-    name: us-west2-docker.pkg.dev/${PROJECT_ID}/go-automated-infra-repo/terraform:latest
-    args: ['apply', 'tf.plan']
   # copy content of public to the created GCS bucket
   - id: gsutil-copy
     name: gcr.io/marwan01-terraform-admin/gsutil
