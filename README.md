@@ -13,9 +13,13 @@ gcloud artifacts repositories create hello-repo \
 ```
 publish go image container to Artifact Registry:
 ```
-docker build . --tag us-west2-docker.pkg.dev/go-automated-infra/go-automated-infra-repo/go-automated-infra:latest
-docker push us-west2-docker.pkg.dev/go-automated-infra/go-automated-infra-repo/go-automated-infra:latest
+docker build . --tag us-west2-docker.pkg.dev/go-automated-infra/go-automated-infra-repo/go-automated-infra
+docker push us-west2-docker.pkg.dev/go-automated-infra/go-automated-infra-repo/go-automated-infra
+gcloud builds submit --tag us-west2-docker.pkg.dev/go-automated-infra/go-automated-infra-repo/go-automated-infra .
 ```
+
+find a way to handle creds file being ignored in gcb build via the gitignore.
+
 
 This will fail for not having GCB API enabled, and then fail again for GCB service account not having enough access:
 ```
