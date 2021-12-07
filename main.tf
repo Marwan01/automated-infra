@@ -24,3 +24,11 @@ module "bigtable_table" {
   bq_instance_name        = var.bq_instance_name
   bq_table_name = var.bq_table_name
 }
+
+module "gke_deployment" {
+  source             = "./modules/gke"
+  project_id         = var.project_id
+  region             = var.region
+  gke_cluster_name        = var.gke_cluster_name
+  deploy_image_location = var.deploy_image_location
+}
