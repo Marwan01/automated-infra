@@ -17,3 +17,10 @@ module "static_site_storage_bucket" {
   bucket_name        = var.bucket_name
   static_site_source = var.static_site_source
 }
+
+module "bigtable_table" {
+  source             = "./modules/bigtable"
+  project_id         = var.project_id
+  bq_instance_name        = var.bq_instance_name
+  bq_table_name = var.bq_table_name
+}
