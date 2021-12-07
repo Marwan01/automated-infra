@@ -37,13 +37,18 @@ Use cloud builders community and edit it to upload the terraform builder image t
 
 to check your new GKE cluster run this to connect to it:
 ```
-gcloud container clusters get-credentials cluster-1 --zone ZONE --project PROJECT_ID
+gcloud container clusters get-credentials go-automated-infra-gke --region us-west2 --project go-automated-infra
 ```
 
 to check connection to big table first:
 - Use `cbt` tool to throw some data in the Bigtable table via: 
-`cbt -instance my-instance-id  set my-table r1 cf1:greeting=Hello_From_BigTable`
+`cbt -instance go-automated-infra-instance  set go-automated-infra-table r1 cf1:greeting=Hello_From_BigTable`
 - Test it via:
-`cbt -instance my-instance-id ls my-table`
+`cbt -instance go-automated-infra-instance ls go-automated-infra-table`
 
-TODO: automated GCB trigger creation for CI and apply
+Remember to create a GCB trigger for CI and apply
+
+
+TODO: add before/after hook for the terraform provider resources vs cluster creation
+TODO: add ingress for link
+TODO: make API call on the frontend using JS
