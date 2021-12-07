@@ -8,9 +8,9 @@ resource "google_container_cluster" "primary" {
 
 data "google_client_config" "default" {}
 data "google_container_cluster" "my_cluster" {
-  name               = var.gke_cluster_name
-  project = var.project_id
-  location           = var.region
+  name     = var.gke_cluster_name
+  project  = var.project_id
+  location = var.region
 }
 
 provider "kubernetes" {
@@ -32,14 +32,14 @@ resource "kubernetes_deployment" "kd" {
   }
   spec {
     replicas = 1
-    selector  {
+    selector {
       match_labels = {
         app = var.project_id
       }
     }
     template {
       metadata {
-        labels  = {
+        labels = {
           app = var.project_id
         }
       }
