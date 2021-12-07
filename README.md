@@ -13,6 +13,11 @@ gcloud artifacts repositories create hello-repo \
 ```
 publish go image container to Artifact Registry:
 ```
- gcloud builds submit \
-    --tag LOCATION-docker.pkg.dev/PROJECT_ID/hello-repo/helloworld-gke .
+docker build . --tag us-west2-docker.pkg.dev/go-automated-infra/go-automated-infra-repo/go-automated-infra:latest
+docker push us-west2-docker.pkg.dev/go-automated-infra/go-automated-infra-repo/go-automated-infra:latest
+```
+
+This will fail for not having GCB API enabled, and then fail again for GCB service account not having enough access:
+```
+gcloud projects add-iam-policy-binding LOCATION --member serviceAccount:GCB_ACCT@cloudbuild.gserviceaccount.com --role roles/storage.admin
 ```
