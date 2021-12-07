@@ -1,6 +1,6 @@
 resource "google_container_cluster" "primary" {
-  name               = "go-bigtable-gke"
-  project = "go-bigtable"
+  name               = "automated-infra-gke"
+  project = "automated-infra"
   location           = "us-central1-a"
   initial_node_count = 2
 }
@@ -8,8 +8,8 @@ resource "google_container_cluster" "primary" {
 
 data "google_client_config" "default" {}
 data "google_container_cluster" "my_cluster" {
-  name               = "go-bigtable-gke"
-  project = "go-bigtable"
+  name               = "automated-infra-gke"
+  project = "automated-infra"
   location           = "us-central1-a"
 }
 
@@ -21,32 +21,32 @@ provider "kubernetes" {
 
 resource "kubernetes_namespace" "kn" {
   metadata {
-    name = "go-bigtable"
+    name = "automated-infra"
   }
 }
 
 resource "kubernetes_deployment" "kd" {
   metadata {
-    name      = "go-bigtable"
+    name      = "automated-infra"
     namespace = kubernetes_namespace.kn.metadata.0.name
   }
   spec {
     replicas = 1
     selector  {
       match_labels = {
-        app = "go-bigtable"
+        app = "automated-infra"
       }
     }
     template {
       metadata {
         labels  = {
-          app = "go-bigtable"
+          app = "automated-infra"
         }
       }
       spec {
         container {
-          image = "us-west2-docker.pkg.dev/go-bigtable/go-bigtable/go-bigtable:latest"
-          name  = "go-bigtable"
+          image = "us-west2-docker.pkg.dev/automated-infra/automated-infra/automated-infra:latest"
+          name  = "automated-infra"
           port {
             container_port = 8080
           }
@@ -58,7 +58,7 @@ resource "kubernetes_deployment" "kd" {
 
 resource "kubernetes_service" "ks" {
   metadata {
-    name      = "go-bigtable"
+    name      = "automated-infra"
     namespace = kubernetes_namespace.kn.metadata.0.name
   }
   spec {

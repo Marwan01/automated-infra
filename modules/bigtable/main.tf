@@ -1,6 +1,6 @@
 resource "google_bigtable_instance" "instance" {
   name    = "my-instance-id"
-  project = "go-bigtable"
+  project = "automated-infra"
   //   add deletion_protection in order to be able to delete db via terraform destroy
   deletion_protection = false
   cluster {
@@ -13,7 +13,7 @@ resource "google_bigtable_instance" "instance" {
 
 resource "google_bigtable_table" "table" {
   name          = "my-table"
-  project       = "go-bigtable"
+  project       = "automated-infra"
   instance_name = google_bigtable_instance.instance.name
   column_family {
     family = "cf1"

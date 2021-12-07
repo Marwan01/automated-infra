@@ -1,4 +1,4 @@
-module go-bigtable
+module automated-infra
 
 go 1.17
 
