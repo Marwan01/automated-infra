@@ -46,11 +46,11 @@ func bigTableClientStop(ctx context.Context, client *bigtable.Client) {
 func main() {
 	ctx := context.Background()
 
-	projectID := "my-project-id"   // The Google Cloud Platform project ID
-	instanceID := "my-instance-id" // The Google Cloud Bigtable instance ID
-	tableID := "my-table"          // The Google Cloud Bigtable table
-	rowKey := "r1"                 // The Google Cloud Bigtable table row
-	columnFamily := "cf1"          // The Google Cloud Bigtable table column
+	projectID := "go-automated-infra"           // The Google Cloud Platform project ID
+	instanceID := "go-automated-infra-instance" // The Google Cloud Bigtable instance ID
+	tableID := "go-automated-infra-table"       // The Google Cloud Bigtable table
+	rowKey := "r1"                              // The Google Cloud Bigtable table row
+	columnFamily := "cf1"                       // The Google Cloud Bigtable table column
 
 	// Override with -project, -instance, -table flags
 	flag.StringVar(&projectID, "project", projectID, "The Google Cloud Platform project ID.")
