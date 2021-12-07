@@ -11,8 +11,3 @@ steps:
   - id: terraform-apply
     name: gcr.io/marwan01-terraform-admin/terraform
     args: ['apply', 'tf.plan']
-  # copy content of public to the created GCS bucket
-  - id: gsutil-copy
-    name: gcr.io/marwan01-terraform-admin/gsutil
-    entrypoint: gsutil
-    args: ['cp', 'index.html', 'gs://website-bucket-11242021/index.html']
