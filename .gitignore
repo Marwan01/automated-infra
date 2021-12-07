@@ -5,3 +5,5 @@ tf.plan
 # local terraform state files:
 terraform.tfstate
 terraform.tfstate.backup
+
+go-bigtable.json
