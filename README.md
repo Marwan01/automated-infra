@@ -26,6 +26,15 @@ This will fail for not having GCB API enabled, and then fail again for GCB servi
 gcloud projects add-iam-policy-binding LOCATION --member serviceAccount:GCB_ACCT@cloudbuild.gserviceaccount.com --role roles/storage.admin
 ```
 
+
+before running GCB:
+give GCB access to create iam keys
+```
+gcloud projects add-iam-policy-binding go-automated-infra --member serviceAccount:799505015079@cloudbuild.iam.gserviceaccount.com --role roles/iam.serviceAccountUser
+```
+
+Use cloud builders community and edit it to upload the terraform builder image to artifact registry
+
 to check your new GKE cluster run this to connect to it:
 ```
 gcloud container clusters get-credentials cluster-1 --zone ZONE --project PROJECT_ID
