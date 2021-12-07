@@ -17,3 +17,23 @@ variable "static_site_source" {
   description = "Source of the site to publish"
   type        = string
 }
+
+variable "bq_instance_name" {
+  description = "Name of the bigtable instance"
+  type        = string
+}
+
+variable "bq_table_name" {
+  description = "Name of the bigtable table"
+  type        = string
+}
+
+variable "gke_cluster_name" {
+  description = "Name of the GKE cluster"
+  type        = string
+}
+
+variable "deploy_image_location" {
+  description = "Location of container/artifact to deploy"
+  type        = string
+}

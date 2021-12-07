@@ -1,0 +1,13 @@
+steps:
+  # use gcloud iam command to pull a copy of the terraform service acct creds
+  - id: generate-terraform-creds
+    name: gcr.io/google.com/cloudsdktool/cloud-sdk
+    args: ['gcloud', 'iam', 'service-accounts', 'keys', 'create', '${PROJECT_ID}.json', '--iam-account', 'terraform@${PROJECT_ID}.iam.gserviceaccount.com']  
+  # create the terraform plan and output it to tf.plan
+  - id: terraform-plan
+    name: gcr.io/marwan01-terraform-admin/terraform
+    args: ['plan', '-out', 'tf.plan']
+  # CAREFUL: apply the terraform plan in tf.plan to create the desired infrastructure
+  - id: terraform-apply
+    name: gcr.io/marwan01-terraform-admin/terraform
+    args: ['apply', 'tf.plan']
