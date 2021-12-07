@@ -25,3 +25,8 @@ This will fail for not having GCB API enabled, and then fail again for GCB servi
 ```
 gcloud projects add-iam-policy-binding LOCATION --member serviceAccount:GCB_ACCT@cloudbuild.gserviceaccount.com --role roles/storage.admin
 ```
+
+to check your new GKE cluster run this to connect to it:
+```
+gcloud container clusters get-credentials cluster-1 --zone ZONE --project PROJECT_ID
+```
