@@ -40,4 +40,10 @@ to check your new GKE cluster run this to connect to it:
 gcloud container clusters get-credentials cluster-1 --zone ZONE --project PROJECT_ID
 ```
 
+to check connection to big table first:
+- Use `cbt` tool to throw some data in the Bigtable table via: 
+`cbt -instance my-instance-id  set my-table r1 cf1:greeting=Hello_From_BigTable`
+- Test it via:
+`cbt -instance my-instance-id ls my-table`
+
 TODO: automated GCB trigger creation for CI and apply
