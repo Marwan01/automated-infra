@@ -1,4 +1,16 @@
 <!doctype html>
+<script type="text/javascript" language="javascript">
+function UserAction() {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+         if (this.readyState == 4 && this.status == 200) {
+             alert(this.responseText);
+         }
+    };
+    xhttp.open("GET", "localhost:8080/bigtable", true);
+    xhttp.send();
+}
+</script>
 <html>
   <head>
     <title>Simple demo – HTML</title>
@@ -7,6 +19,7 @@
   <body>
     <div id="welcome">
         <h2>Welcome to automated infrastructure demo</h2>
+        <button type="submit" onclick="UserAction()">call BigTable</button>
     </div>
     <p>Small paragraph</p>
   </body>
