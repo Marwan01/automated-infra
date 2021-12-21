@@ -3,6 +3,14 @@ steps:
   - id: generate-terraform-creds
     name: gcr.io/google.com/cloudsdktool/cloud-sdk
     args: ['gcloud', 'iam', 'service-accounts', 'keys', 'create', '${PROJECT_ID}.json', '--iam-account', 'terraform@${PROJECT_ID}.iam.gserviceaccount.com']
+  # build and tag image of our golang API
+  - id: build app
+    name: gcr.io/cloud-builders/docker
+    args: ['build', '-t', 'us-west2-docker.pkg.dev/go-automated-infra/go-automated-infra-repo/go-automated-infra', '.']
+  # push golang API built image to artifact registry
+  - id: push artifact
+    name: gcr.io/cloud-builders/docker
+    args: ['push', 'us-west2-docker.pkg.dev/go-automated-infra/go-automated-infra-repo/go-automated-infra']
   # error out and print unformatted terraform code
   - id: terraform-formatting
     name: us-west2-docker.pkg.dev/${PROJECT_ID}/go-automated-infra-repo/terraform:latest

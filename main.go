@@ -77,11 +77,13 @@ func main() {
 	//create router and set up two routes
 	router := mux.NewRouter().StrictSlash(true)
 	router.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		w.WriteHeader(http.StatusAccepted)
 		fmt.Fprintf(w, "Welcome home!")
 	})
 	router.HandleFunc("/bigtable", func(w http.ResponseWriter, r *http.Request) {
 		row, err := readRow(ctx, tbl, columnFamily, rowKey)
 		if err != nil {
+			w.WriteHeader(http.StatusInternalServerError)
 			logrus.Error(err)
 		}
 		fmt.Fprint(w, row)

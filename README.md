@@ -15,6 +15,9 @@ publish go image container to Artifact Registry:
 ```
 docker build . --tag us-west2-docker.pkg.dev/go-automated-infra/go-automated-infra-repo/go-automated-infra
 docker push us-west2-docker.pkg.dev/go-automated-infra/go-automated-infra-repo/go-automated-infra
+```
+or in GCB:
+```
 gcloud builds submit --tag us-west2-docker.pkg.dev/go-automated-infra/go-automated-infra-repo/go-automated-infra .
 ```
 
